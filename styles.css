@@ -1,0 +1,33 @@
+/* * { border: 2px dotted red; } */
+
+.main-display {
+    text-align: center;
+}
+
+
+div.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    flex: 1 0 100px;
+    gap: 30px;
+    margin: 0 30px;
+}
+
+div.scores {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+div.playerScore-wrapper, div.computerScore-wrapper {
+    display: flex;
+}
+
+/* .playerScore, .computerScore {
+    flex: 1 0 20px;
+    margin: 0 30px;
+} */
