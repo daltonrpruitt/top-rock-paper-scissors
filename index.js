@@ -52,4 +52,59 @@ function game() {
     }
 }
 
-game();
+
+const rockButton = document.querySelector('button.rock');
+const paperButton = document.querySelector('button.paper');
+const scissorsButton = document.querySelector('button.scissors');
+
+const buttons = document.querySelectorAll('button');
+console.log(`buttons = ${buttons}`);
+buttons.forEach(b => console.log(`button = ${b.textContent}`) );
+
+let playerScore = 0;
+let computerScore = 0;
+
+
+
+function setScores(){
+    const playerScore_display = document.querySelector("p.playerScore");
+    const computerScore_display = document.querySelector("p.computerScore");
+    playerScore_display.textContent = playerScore;
+    computerScore_display.textContent = computerScore;
+}
+
+function reset() {
+    playerScore = 0;
+    computerScore = 0;
+    setScores();
+}
+
+function processButton(e) {
+    // console.log(e.target.textContent);
+    const playerSelectionIndex = choices.indexOf(e.target.textContent.toLowerCase());
+    // console.log(playerSelectionIndex);
+    let results = playRound(playerSelectionIndex, getComputerChoiceIndex());
+    console.log(results);
+    if (results.toLowerCase().includes("win")) { playerScore++; }
+    else if (results.toLowerCase().includes("lose")) { computerScore++; }
+    else { /*tie; do nothing */ };
+
+    setScores();
+
+    if( playerScore >= 5) {
+        alert("You win overall! With a score of " + playerScore + " to " + computerScore + "!");
+        reset();
+    } else if ( computerScore >= 5) {
+        alert("You lost overall! With a score of " + computerScore + " to " + playerScore + "!");
+        reset();
+    }
+
+}
+
+buttons.forEach(b => b.addEventListener('click', processButton));
+
+// rockButton.addEventListener('click', playRound(0, getComputerChoiceIndex()));
+// paperButton.addEventListener('click', playRound(1, getComputerChoiceIndex()));
+// scissorsButton.addEventListener('click', playRound(2, getComputerChoiceIndex()));
+
+// game();
